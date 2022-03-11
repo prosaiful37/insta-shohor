@@ -49,6 +49,7 @@ const switchTab = (id) => {
         document.getElementById( "liked" ).style.display = "none";
 
         displayReportedPosts();
+        
     }
 };
 
@@ -122,9 +123,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                          ${post.comments?.id}
                       </a>
-                      ${post.comments?.text}
+                          ${post.comments?.text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -137,7 +138,6 @@ const createPost = (post) => {
 const showPosts = (posts) => {
     const productsContainer = document.getElementById( "posts" );
     productsContainer.innerHTML = "";
-
     posts.forEach((post) => {
         const div = createPost(post);
         productsContainer.appendChild(div);
@@ -155,12 +155,11 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    reportedPosts.innerHTML = ''
-    // console.log(reportedPosts);
     posts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
     });
+
 };
 
 const loadPosts = async () =>{
