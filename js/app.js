@@ -27,7 +27,9 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-   return text.length < 30 ? text.length < 30 :text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+   return text.length < 30
+    ? text.slice(0, 30) + "<span class='fw-bold'>... read more</span>"
+    : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
@@ -153,6 +155,7 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
+    reportedPosts.innerHTML = ''
     // console.log(reportedPosts);
     posts.forEach((post) => {
         const div = createPost(post);
